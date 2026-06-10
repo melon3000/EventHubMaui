@@ -1,0 +1,44 @@
+<ContentPage
+    x:Class="EventHubMaui.Pages.AdminDashboardPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Admin">
+
+    <ScrollView BackgroundColor="{StaticResource Bg}">
+        <VerticalStackLayout Padding="22" Spacing="18">
+
+            <Border Background="{StaticResource BlueGradient}" StrokeThickness="0" Padding="24">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="32" />
+                </Border.StrokeShape>
+                <VerticalStackLayout>
+                    <Label Text="Halduri paneel" FontSize="32" FontAttributes="Bold" TextColor="White" />
+                    <Label Text="CRUD loogika üritustele ja kategooriatele" TextColor="#EAF1FF" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                <Border Style="{StaticResource SoftCard}">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="🎟" FontSize="40" />
+                        <Label Text="Üritused" FontSize="21" FontAttributes="Bold" />
+                        <Label Text="Lisa, muuda ja kustuta üritusi." TextColor="{StaticResource Muted}" />
+                        <Button Text="Ava" Clicked="EventsButton_Clicked" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Grid.Column="1" Style="{StaticResource SoftCard}">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="🏷" FontSize="40" />
+                        <Label Text="Kategooriad" FontSize="21" FontAttributes="Bold" />
+                        <Label Text="Halda kategooriaid." TextColor="{StaticResource Muted}" />
+                        <Button Text="Ava" BackgroundColor="{StaticResource Orange}" Clicked="CategoriesButton_Clicked" />
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+            <Button Text="Profiil" BackgroundColor="#111827" Clicked="ProfileButton_Clicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,201 @@
+<ContentPage
+    x:Class="EventHubMaui.Pages.AdminEventEditPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Ürituste CRUD">
+
+    <Grid RowDefinitions="Auto,*" Padding="22" BackgroundColor="{StaticResource Bg}">
+
+        <Border
+            Grid.Row="0"
+            Background="{StaticResource BlueGradient}"
+            StrokeThickness="0"
+            Padding="24">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="30" />
+            </Border.StrokeShape>
+
+            <Grid ColumnDefinitions="*,Auto">
+                <VerticalStackLayout>
+                    <Label
+                        Text="Ürituste CRUD"
+                        FontSize="32"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+                    <Label
+                        Text="Create, Read, Update, Delete üritustele"
+                        TextColor="#EAF1FF"
+                        FontSize="15" />
+                </VerticalStackLayout>
+
+                <Button
+                    Grid.Column="1"
+                    Text="Tühjenda vorm"
+                    BackgroundColor="#33FFFFFF"
+                    WidthRequest="145"
+                    Clicked="ClearButton_Clicked" />
+            </Grid>
+        </Border>
+
+        <Grid
+            Grid.Row="1"
+            ColumnDefinitions="540,*"
+            ColumnSpacing="24"
+            Margin="0,22,0,0">
+
+            <Border
+                Grid.Column="0"
+                Style="{StaticResource SoftCard}"
+                VerticalOptions="Start">
+
+                <ScrollView>
+                    <VerticalStackLayout Spacing="12">
+
+                        <Label
+                            x:Name="FormTitleLabel"
+                            Text="Lisa uus üritus"
+                            FontSize="24"
+                            FontAttributes="Bold" />
+
+                        <Entry
+                            x:Name="TitleEntry"
+                            Placeholder="Pealkiri" />
+
+                        <Editor
+                            x:Name="DescriptionEditor"
+                            Placeholder="Kirjeldus"
+                            HeightRequest="105" />
+
+                        <Label
+                            Text="Kategooria"
+                            TextColor="{StaticResource Muted}"
+                            FontSize="13" />
+
+                        <Picker
+                            x:Name="CategoryPicker"
+                            Title="Vali kategooria"
+                            HeightRequest="58"
+                            FontSize="16"
+                            HorizontalOptions="Fill" />
+
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                            <DatePicker
+                                x:Name="DatePicker"
+                                HeightRequest="54" />
+
+                            <TimePicker
+                                Grid.Column="1"
+                                x:Name="TimePicker"
+                                HeightRequest="54" />
+                        </Grid>
+
+                        <Entry
+                            x:Name="LocationEntry"
+                            Placeholder="Asukoht" />
+
+                        <Entry
+                            x:Name="ImageUrlEntry"
+                            Placeholder="Pildi URL" />
+
+                        <Entry
+                            x:Name="MaxParticipantsEntry"
+                            Placeholder="Maksimaalne osalejate arv"
+                            Keyboard="Numeric" />
+
+                        <Button
+                            x:Name="SaveButton"
+                            Text="+ Lisa üritus"
+                            Clicked="SaveButton_Clicked" />
+
+                    </VerticalStackLayout>
+                </ScrollView>
+            </Border>
+
+            <CollectionView
+                Grid.Column="1"
+                x:Name="EventsCollection"
+                SelectionMode="None">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Vertical"
+                        Span="3"
+                        HorizontalItemSpacing="18"
+                        VerticalItemSpacing="18" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            HeightRequest="300"
+                            BackgroundColor="White"
+                            StrokeThickness="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="26" />
+                            </Border.StrokeShape>
+                            <Border.Shadow>
+                                <Shadow Brush="#25000000" Offset="0,8" Radius="18" Opacity="0.24" />
+                            </Border.Shadow>
+
+                            <Grid RowDefinitions="155,*">
+
+                                <Image
+                                    Grid.Row="0"
+                                    Source="{Binding ImageUrl}"
+                                    Aspect="AspectFill"
+                                    HeightRequest="155" />
+
+                                <VerticalStackLayout
+                                    Grid.Row="1"
+                                    Padding="14"
+                                    Spacing="6">
+
+                                    <Label
+                                        Text="{Binding Title}"
+                                        FontSize="18"
+                                        FontAttributes="Bold"
+                                        MaxLines="1" />
+
+                                    <Label
+                                        Text="{Binding CategoryName}"
+                                        FontSize="12"
+                                        TextColor="{StaticResource Orange}"
+                                        FontAttributes="Bold"
+                                        MaxLines="1" />
+
+                                    <Label
+                                        Text="{Binding DateText}"
+                                        FontSize="12"
+                                        TextColor="{StaticResource Blue}"
+                                        FontAttributes="Bold" />
+
+                                    <Grid ColumnDefinitions="*,*"
+                                          ColumnSpacing="8"
+                                          Margin="0,6,0,0">
+
+                                        <Button
+                                            Text="Muuda"
+                                            HeightRequest="38"
+                                            FontSize="12"
+                                            CommandParameter="{Binding EventId}"
+                                            Clicked="EditButton_Clicked" />
+
+                                        <Button
+                                            Grid.Column="1"
+                                            Text="Kustuta"
+                                            HeightRequest="38"
+                                            FontSize="12"
+                                            BackgroundColor="{StaticResource Danger}"
+                                            CommandParameter="{Binding EventId}"
+                                            Clicked="DeleteButton_Clicked" />
+                                    </Grid>
+
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
+</ContentPage>

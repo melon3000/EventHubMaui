@@ -1,0 +1,124 @@
+<ContentPage
+    x:Class="EventHubMaui.Pages.MyRegistrationsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Minu üritused">
+
+    <Grid RowDefinitions="Auto,*" Padding="22" BackgroundColor="{StaticResource Bg}">
+
+        <Border
+            Grid.Row="0"
+            Background="{StaticResource BlueGradient}"
+            StrokeThickness="0"
+            Padding="24">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="30" />
+            </Border.StrokeShape>
+
+            <VerticalStackLayout>
+                <Label
+                    Text="Minu üritused"
+                    FontSize="32"
+                    FontAttributes="Bold"
+                    TextColor="White" />
+                <Label
+                    Text="Sinu registreeritud üritused"
+                    TextColor="#EAF1FF"
+                    FontSize="15" />
+            </VerticalStackLayout>
+        </Border>
+
+        <CollectionView
+            Grid.Row="1"
+            x:Name="RegistrationsCollection"
+            Margin="0,22,0,0"
+            SelectionMode="None"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill">
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    Orientation="Vertical"
+                    Span="4"
+                    HorizontalItemSpacing="22"
+                    VerticalItemSpacing="22" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.EmptyView>
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Spacing="8">
+                    <Label
+                        Text="Registreeringuid ei ole"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center" />
+                    <Label
+                        Text="Ava ürituse detailid ja registreeru."
+                        TextColor="{StaticResource Muted}"
+                        HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        HeightRequest="330"
+                        BackgroundColor="White"
+                        StrokeThickness="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="28" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="#28000000" Offset="0,8" Radius="20" Opacity="0.26" />
+                        </Border.Shadow>
+
+                        <Grid RowDefinitions="190,*">
+
+                            <Image
+                                Grid.Row="0"
+                                Source="{Binding ImageUrl}"
+                                Aspect="AspectFill"
+                                HeightRequest="190" />
+
+                            <VerticalStackLayout
+                                Grid.Row="1"
+                                Padding="16,13"
+                                Spacing="6">
+
+                                <Label
+                                    Text="{Binding Title}"
+                                    FontSize="19"
+                                    FontAttributes="Bold"
+                                    TextColor="{StaticResource Text}"
+                                    MaxLines="1" />
+
+                                <Label
+                                    Text="{Binding DateText}"
+                                    FontSize="12"
+                                    TextColor="{StaticResource Blue}"
+                                    FontAttributes="Bold" />
+
+                                <Label
+                                    Text="{Binding Location}"
+                                    FontSize="12"
+                                    TextColor="{StaticResource Muted}"
+                                    MaxLines="1" />
+
+                                <Button
+                                    Text="Tühista"
+                                    HeightRequest="38"
+                                    FontSize="12"
+                                    BackgroundColor="{StaticResource Danger}"
+                                    CommandParameter="{Binding EventId}"
+                                    Clicked="CancelButton_Clicked" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

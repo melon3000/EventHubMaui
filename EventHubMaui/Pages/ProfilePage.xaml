@@ -1,0 +1,26 @@
+<ContentPage
+    x:Class="EventHubMaui.Pages.ProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Profiil">
+
+    <ScrollView BackgroundColor="{StaticResource Bg}">
+        <VerticalStackLayout Padding="22" Spacing="18">
+            <Border Background="{StaticResource BlueGradient}" StrokeThickness="0" Padding="24">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="32" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="👤" FontSize="54" HorizontalOptions="Center" />
+                    <Label x:Name="NameLabel" Text="Külaline" FontSize="28" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" />
+                    <Label x:Name="EmailLabel" Text="Pole sisse logitud" TextColor="#EAF1FF" HorizontalTextAlignment="Center" />
+                    <Label x:Name="RoleLabel" Text="Roll: külaline" TextColor="White" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Button x:Name="LoginButton" Text="Login" Clicked="LoginButton_Clicked" />
+            <Button x:Name="LogoutButton" Text="Logout" BackgroundColor="{StaticResource Danger}" Clicked="LogoutButton_Clicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

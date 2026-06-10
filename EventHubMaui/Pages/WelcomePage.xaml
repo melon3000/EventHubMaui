@@ -1,0 +1,170 @@
+<ContentPage
+    x:Class="EventHubMaui.Pages.WelcomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid BackgroundColor="{StaticResource Bg}">
+
+        <Border
+            Background="{StaticResource BlueGradient}"
+            StrokeThickness="0"
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            WidthRequest="230"
+            HeightRequest="230"
+            TranslationX="72"
+            TranslationY="-72">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="115" />
+            </Border.StrokeShape>
+        </Border>
+
+        <Border
+            BackgroundColor="#DDE3F0"
+            StrokeThickness="0"
+            HorizontalOptions="Start"
+            VerticalOptions="End"
+            WidthRequest="170"
+            HeightRequest="170"
+            TranslationX="-80"
+            TranslationY="80">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="85" />
+            </Border.StrokeShape>
+        </Border>
+
+        <ScrollView>
+            <Grid
+                MinimumHeightRequest="760"
+                Padding="24">
+
+                <VerticalStackLayout
+                    WidthRequest="420"
+                    MaximumWidthRequest="420"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Spacing="22">
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Border
+                            WidthRequest="54"
+                            HeightRequest="54"
+                            BackgroundColor="{StaticResource Blue}"
+                            StrokeThickness="0"
+                            HorizontalOptions="Start">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12" />
+                            </Border.StrokeShape>
+                            <Label
+                                Text="E"
+                                FontSize="32"
+                                FontAttributes="Bold"
+                                TextColor="White"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                        </Border>
+
+                        <Button
+                            Grid.Column="1"
+                            Text="×"
+                            WidthRequest="46"
+                            HeightRequest="46"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource Text}"
+                            FontSize="22"
+                            Clicked="CloseButton_Clicked" />
+                    </Grid>
+
+                    <VerticalStackLayout Spacing="4">
+                        <Label
+                            Text="Welcome to EventHub!"
+                            FontSize="28"
+                            FontAttributes="Bold" />
+                        <Label
+                            Text="WELCOME BACK"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource Blue}" />
+                    </VerticalStackLayout>
+
+                    <Border
+                        BackgroundColor="#E3E8F3"
+                        StrokeThickness="0"
+                        Padding="6">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="18" />
+                        </Border.StrokeShape>
+
+                        <Grid ColumnDefinitions="*,*">
+                            <Button
+                                x:Name="LoginTabButton"
+                                Text="Login"
+                                BackgroundColor="White"
+                                TextColor="{StaticResource Blue}"
+                                Clicked="LoginTabButton_Clicked" />
+
+                            <Button
+                                x:Name="SignUpTabButton"
+                                Grid.Column="1"
+                                Text="Sign up"
+                                BackgroundColor="Transparent"
+                                TextColor="{StaticResource Muted}"
+                                Clicked="SignUpTabButton_Clicked" />
+                        </Grid>
+                    </Border>
+
+                    <Border Style="{StaticResource SoftCard}">
+                        <VerticalStackLayout Spacing="14">
+
+                            <Entry
+                                x:Name="NameEntry"
+                                Placeholder="Full name"
+                                IsVisible="False" />
+
+                            <Entry
+                                x:Name="EmailEntry"
+                                Placeholder="Email"
+                                Keyboard="Email" />
+
+                            <Entry
+                                x:Name="PasswordEntry"
+                                Placeholder="Password"
+                                IsPassword="True" />
+
+                            <HorizontalStackLayout
+                                x:Name="RememberBlock"
+                                Spacing="10">
+                                <Switch IsToggled="True" OnColor="{StaticResource Blue}" />
+                                <Label
+                                    Text="Remember me"
+                                    VerticalOptions="Center"
+                                    TextColor="{StaticResource Muted}" />
+                            </HorizontalStackLayout>
+
+                            <Button
+                                x:Name="MainActionButton"
+                                Text="Login"
+                                Clicked="MainActionButton_Clicked" />
+
+                            <Button
+                                Text="Continue as guest"
+                                BackgroundColor="White"
+                                TextColor="{StaticResource Text}"
+                                BorderColor="#E5E7EB"
+                                BorderWidth="1"
+                                Clicked="GuestButton_Clicked" />
+
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Label
+                        Text="Forgot Password"
+                        TextColor="{StaticResource Muted}"
+                        HorizontalOptions="Center" />
+
+                </VerticalStackLayout>
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>

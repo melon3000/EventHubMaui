@@ -1,0 +1,86 @@
+<Application
+    x:Class="EventHubMaui.App"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="Blue">#3B82F6</Color>
+            <Color x:Key="BlueDark">#2563EB</Color>
+            <Color x:Key="Orange">#F97316</Color>
+            <Color x:Key="Bg">#EEF1F7</Color>
+            <Color x:Key="Card">#FFFFFF</Color>
+            <Color x:Key="Input">#DDE3F0</Color>
+            <Color x:Key="Text">#111827</Color>
+            <Color x:Key="Muted">#7C8495</Color>
+            <Color x:Key="Danger">#EF4444</Color>
+            <Color x:Key="Green">#22C55E</Color>
+
+            <LinearGradientBrush x:Key="BlueGradient" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#60A5FA" Offset="0" />
+                <GradientStop Color="#3B82F6" Offset="0.55" />
+                <GradientStop Color="#2563EB" Offset="1" />
+            </LinearGradientBrush>
+
+            <Style TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource Bg}" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource Text}" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="HeightRequest" Value="46" />
+                <Setter Property="CornerRadius" Value="14" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Blue}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="{StaticResource Input}" />
+                <Setter Property="TextColor" Value="{StaticResource Text}" />
+                <Setter Property="PlaceholderColor" Value="#A8B0C3" />
+                <Setter Property="HeightRequest" Value="48" />
+            </Style>
+
+            <Style TargetType="Editor">
+                <Setter Property="BackgroundColor" Value="{StaticResource Input}" />
+                <Setter Property="TextColor" Value="{StaticResource Text}" />
+                <Setter Property="PlaceholderColor" Value="#A8B0C3" />
+            </Style>
+
+            <Style TargetType="Picker">
+                <Setter Property="BackgroundColor" Value="{StaticResource Input}" />
+                <Setter Property="TextColor" Value="{StaticResource Text}" />
+                <Setter Property="TitleColor" Value="#A8B0C3" />
+                <Setter Property="HeightRequest" Value="48" />
+            </Style>
+
+            <Style x:Key="SoftCard" TargetType="Border">
+                <Setter Property="BackgroundColor" Value="{StaticResource Card}" />
+                <Setter Property="StrokeThickness" Value="0" />
+                <Setter Property="Padding" Value="18" />
+                <Setter Property="StrokeShape">
+                    <Setter.Value>
+                        <RoundRectangle CornerRadius="24" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Shadow">
+                    <Setter.Value>
+                        <Shadow Brush="#25000000" Offset="0,10" Radius="24" Opacity="0.22" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="PageTitle" TargetType="Label">
+                <Setter Property="FontSize" Value="30" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource Text}" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

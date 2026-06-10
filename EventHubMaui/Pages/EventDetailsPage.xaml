@@ -1,0 +1,85 @@
+<ContentPage
+    x:Class="EventHubMaui.Pages.EventDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Detailid">
+
+    <ScrollView BackgroundColor="{StaticResource Bg}">
+        <VerticalStackLayout Spacing="0">
+
+            <Grid HeightRequest="315">
+                <Image
+                    x:Name="EventImage"
+                    Aspect="AspectFill" />
+
+                <BoxView VerticalOptions="End" HeightRequest="150">
+                    <BoxView.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#00111827" Offset="0" />
+                            <GradientStop Color="#DD111827" Offset="1" />
+                        </LinearGradientBrush>
+                    </BoxView.Background>
+                </BoxView>
+
+                <VerticalStackLayout
+                    VerticalOptions="End"
+                    Padding="22"
+                    Spacing="5">
+                    <Label
+                        x:Name="TitleLabel"
+                        FontSize="30"
+                        FontAttributes="Bold"
+                        TextColor="White" />
+                    <Label
+                        x:Name="CategoryLabel"
+                        TextColor="#DCEBFF"
+                        FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <VerticalStackLayout Padding="18" Spacing="14">
+
+                <Border Style="{StaticResource SoftCard}">
+                    <VerticalStackLayout Spacing="10">
+                        <Label
+                            Text="Kirjeldus"
+                            FontSize="20"
+                            FontAttributes="Bold" />
+                        <Label
+                            x:Name="DescriptionLabel"
+                            TextColor="{StaticResource Muted}"
+                            LineHeight="1.2" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                    <Border Style="{StaticResource SoftCard}">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="📅 Aeg" FontAttributes="Bold" />
+                            <Label x:Name="DateLabel" TextColor="{StaticResource Muted}" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border Grid.Column="1" Style="{StaticResource SoftCard}">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="👥 Kohad" FontAttributes="Bold" />
+                            <Label x:Name="ParticipantsLabel" TextColor="{StaticResource Orange}" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <Border Style="{StaticResource SoftCard}">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="📍 Asukoht" FontAttributes="Bold" />
+                        <Label x:Name="LocationLabel" TextColor="{StaticResource Muted}" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Button
+                    Text="Registreeru üritusele"
+                    Clicked="RegisterButton_Clicked" />
+
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

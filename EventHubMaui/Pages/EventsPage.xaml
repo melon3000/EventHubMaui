@@ -1,0 +1,207 @@
+<ContentPage
+    x:Class="EventHubMaui.Pages.EventsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Üritused">
+
+    <Grid RowDefinitions="Auto,*" BackgroundColor="{StaticResource Bg}">
+
+        <Border
+            Grid.Row="0"
+            Background="{StaticResource BlueGradient}"
+            StrokeThickness="0"
+            Padding="28,22,28,26">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="0,0,34,34" />
+            </Border.StrokeShape>
+
+            <Grid
+                RowDefinitions="Auto,Auto"
+                RowSpacing="16"
+                HorizontalOptions="Fill">
+
+                <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12">
+                    <VerticalStackLayout>
+                        <Label
+                            Text="EventHub"
+                            FontSize="36"
+                            FontAttributes="Bold"
+                            TextColor="White" />
+
+                        <Label
+                            Text="Leia üritus, vaata detaile ja registreeru"
+                            TextColor="#EAF1FF"
+                            FontSize="15" />
+                    </VerticalStackLayout>
+
+                    <Button
+                        Grid.Column="1"
+                        Text="Minu"
+                        WidthRequest="90"
+                        BackgroundColor="#33FFFFFF"
+                        Clicked="MyButton_Clicked" />
+
+                    <Button
+                        Grid.Column="2"
+                        Text="Admin"
+                        WidthRequest="100"
+                        BackgroundColor="#33FFFFFF"
+                        Clicked="AdminButton_Clicked" />
+                </Grid>
+
+                <Border
+                    Grid.Row="1"
+                    BackgroundColor="White"
+                    StrokeThickness="0"
+                    Padding="14,8"
+                    HorizontalOptions="Fill">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="22" />
+                    </Border.StrokeShape>
+
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Picker
+                            x:Name="CategoryPicker"
+                            Title="Kõik kategooriad"
+                            HeightRequest="56"
+                            FontSize="16"
+                            HorizontalOptions="Fill"
+                            SelectedIndexChanged="CategoryPicker_SelectedIndexChanged" />
+
+                        <Button
+                            Grid.Column="1"
+                            Text="↻"
+                            WidthRequest="60"
+                            HeightRequest="52"
+                            BackgroundColor="{StaticResource Orange}"
+                            Clicked="RefreshButton_Clicked" />
+                    </Grid>
+                </Border>
+
+            </Grid>
+        </Border>
+
+        <CollectionView
+            Grid.Row="1"
+            x:Name="EventsCollection"
+            SelectionMode="Single"
+            SelectionChanged="EventsCollection_SelectionChanged"
+            Margin="24"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill">
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    Orientation="Vertical"
+                    Span="4"
+                    HorizontalItemSpacing="22"
+                    VerticalItemSpacing="22" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.EmptyView>
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Spacing="8"
+                    Padding="40">
+                    <Label
+                        Text="Üritusi ei leitud"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center" />
+                    <Label
+                        Text="Vali teine kategooria või lisa üritus admin paneelis."
+                        TextColor="{StaticResource Muted}"
+                        HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        HeightRequest="330"
+                        BackgroundColor="White"
+                        StrokeThickness="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="28" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="#28000000" Offset="0,8" Radius="20" Opacity="0.26" />
+                        </Border.Shadow>
+
+                        <Grid RowDefinitions="190,*">
+
+                            <Grid Grid.Row="0">
+                                <Image
+                                    Source="{Binding ImageUrl}"
+                                    Aspect="AspectFill"
+                                    HeightRequest="190" />
+
+                                <Border
+                                    BackgroundColor="#DD111827"
+                                    Padding="10,5"
+                                    Margin="14"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Start"
+                                    StrokeThickness="0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="16" />
+                                    </Border.StrokeShape>
+
+                                    <Label
+                                        Text="{Binding CategoryName}"
+                                        TextColor="White"
+                                        FontSize="12"
+                                        FontAttributes="Bold" />
+                                </Border>
+                            </Grid>
+
+                            <VerticalStackLayout
+                                Grid.Row="1"
+                                Padding="16,13"
+                                Spacing="6">
+
+                                <Label
+                                    Text="{Binding Title}"
+                                    FontSize="19"
+                                    FontAttributes="Bold"
+                                    TextColor="{StaticResource Text}"
+                                    MaxLines="1" />
+
+                                <Label
+                                    Text="{Binding Description}"
+                                    FontSize="13"
+                                    TextColor="{StaticResource Muted}"
+                                    MaxLines="2" />
+
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <Label
+                                        Text="{Binding DateText}"
+                                        FontSize="12"
+                                        TextColor="{StaticResource Blue}"
+                                        FontAttributes="Bold"
+                                        MaxLines="1" />
+
+                                    <Label
+                                        Grid.Column="1"
+                                        Text="{Binding ParticipantsText}"
+                                        FontSize="12"
+                                        TextColor="{StaticResource Orange}"
+                                        FontAttributes="Bold" />
+                                </Grid>
+
+                                <Label
+                                    Text="{Binding Location}"
+                                    FontSize="12"
+                                    TextColor="{StaticResource Muted}"
+                                    MaxLines="1" />
+
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>
